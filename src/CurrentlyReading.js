@@ -4,14 +4,7 @@ import './App.css'
 
 class CurrentlyReading extends Component {
 
-  // state = {
-  //   currentlyReadingBooks: []
-  // }
-
-
     render() {
-    // console.log(this.props)
-    // const { query } = this.state
 
       let currentlyReadingBooks = this.props.books.filter((book) => book.shelf === 'currentlyReading')
 
