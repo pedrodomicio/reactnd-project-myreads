@@ -1,13 +1,17 @@
 import React, {Component} from 'react'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class CurrentlyReading extends Component {
 
-  state = {
-    currentlyReadingBooks: []
-  }
+  // state = {
+  //   currentlyReadingBooks: []
+  // }
+
 
     render() {
+    // console.log(this.props)
+    // const { query } = this.state
 
       let currentlyReadingBooks = this.props.books.filter((book) => book.shelf === 'currentlyReading')
 
@@ -17,13 +21,12 @@ class CurrentlyReading extends Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                     {currentlyReadingBooks.map((book) => (
-
                       <li key={book.id}>
                         <div className="book">
                           <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url('+ book.imageLinks.thumbnail + ')' }}></div>
                             <div className="book-shelf-changer">
-                              <select>
+                              <select onChange={(e) => BooksAPI.update(book, e.target.value)}>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -37,6 +40,7 @@ class CurrentlyReading extends Component {
                         </div>
                       </li>
                     ))}
+
                     </ol>
                   </div>
                 </div>

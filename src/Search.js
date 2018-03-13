@@ -1,5 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class Search extends Component {
@@ -8,7 +9,7 @@ class Search extends Component {
     query: ''
   }
 
-    updateQuery = (query) => {
+  updateQuery = (query) => {
     this.setState({ query: query.trim() })
   }
 

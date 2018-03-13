@@ -6,7 +6,7 @@ import CurrentlyReading from './CurrentlyReading'
 import WantToRead from './WantToRead'
 import Read from './Read'
 import { Route } from 'react-router-dom'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class App extends React.Component {
     state = {
@@ -19,13 +19,19 @@ class App extends React.Component {
     })
   }
 
-    searchBook(query, maxResults) {
+  getBook() {
+      BooksAPI.get(this.state.books.id).then((book) => {
+        this.setState({ book })
+      })
+   }
+
+  searchBook(query, maxResults) {
       BooksAPI.search(query, maxResults).then(books => {
         this.setState(state => ({
           books: state.books.concat([ books ])
         }))
       })
-    }
+   }
 
   render() {
     return (
